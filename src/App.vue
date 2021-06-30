@@ -5,7 +5,7 @@
                 <router-link to="/"><img src="@/assets/img/logo.png" width="80" alt="logo"></router-link>
                 <v-toolbar-title class="black--text">Title</v-toolbar-title>
                 <v-toolbar-items>
-                    <v-btn text small class="nav_btn" to="/">На главную</v-btn>
+                    <a class="nav_btn" href="https://jrgreez.ru/">Основной сайт</a>
                 </v-toolbar-items>
             </v-toolbar>
         </v-card>
@@ -28,6 +28,9 @@
 </script>
 
 <style lang="scss">
+    .v-toolbar__items {
+        align-items: center;
+    }
     .mycont {
         max-width: none !important;
         width: 95% !important;
@@ -46,6 +49,7 @@
     }
 
     .nav_btn {
+        margin-left: 10px;
         color: rgba(0, 0, 0, .5) !important;
 
         a {
