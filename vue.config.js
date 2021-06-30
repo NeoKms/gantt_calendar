@@ -16,6 +16,6 @@ module.exports = {
 	runtimeCompiler: true,
 	assetsDir: '@/assets/',
 	publicPath:  process.env.NODE_ENV === 'production'
-		? 'gantt-calendar'
+		? '/gantt-calendar/'
 		: '/'
 };

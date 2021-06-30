@@ -7,7 +7,7 @@ const router = new Router({
     mode: "history",
     routes: [
         {
-            path: '/',
+            path: '/gantt-calendar',
             name: 'home',
             component: () => import("../components/pages/gantt/gantCalendar")
         },
