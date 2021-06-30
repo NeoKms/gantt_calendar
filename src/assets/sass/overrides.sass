@@ -1,0 +1,143 @@
+// =========================================================
+// * Vuetify Material Dashboard - v2.1.0
+// =========================================================
+//
+// * Product Page: https://www.creative-tim.com/product/vuetify-material-dashboard
+// * Copyright 2019 Creative Tim (https://www.creative-tim.com)
+//
+// * Coded by Creative Tim
+//
+// =========================================================
+//
+// * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+// Creative Tim refine style code
+@import variables
+@import vuetify-material/sidebar
+@import vuetify-material/appbar
+@import vuetify-material/buttons
+@import vuetify-material/pagination
+@import vuetify-material/footer
+@import vuetify-material/view
+@import vuetify-material/settings
+@import vuetify-material/card
+@import vuetify-material/table
+@import vuetify-material/tab
+@import vuetify-material/notification
+@import vuetify-material/modal
+@import vuetify-material/map
+@import vuetify-material/chip
+
+.v-btn.v-size--default,
+.v-btn.v-size--large
+  &:not(.v-btn--icon):not(.v-btn--fab)
+    padding: 0 30px !important
+
+.theme--light.v-list-item .v-list-item__action-text,
+.theme--light.v-list-item .v-list-item__subtitle
+  color: #999
+
+.theme--light.v-text-field>.v-input__control>.v-input__slot:before
+  border-color: #d2d2d2
+
+.v-label.v-label,
+.v-alert.v-alert
+  font-size: $font-size-root
+
+.theme--light .v-main
+  background-color: #eee
+
+.tooltip
+  display: block !important
+  z-index: 10000
+
+  .tooltip-inner
+    background: rgba(0, 0, 0, 0.56)
+    color: white
+    border-radius: 5px
+    padding: 7px 15px 7px 15px
+
+  .tooltip-arrow
+    width: 0
+    height: 0
+    border-style: solid
+    position: absolute
+    margin: 5px
+    border-color: rgba(0, 0, 0, 0.56)
+    z-index: 1
+
+  &[x-placement^="top"]
+    margin-bottom: 5px
+
+    .tooltip-arrow
+      border-width: 5px 5px 0 5px
+      border-left-color: transparent !important
+      border-right-color: transparent !important
+      border-bottom-color: transparent !important
+      bottom: -5px
+      left: calc(50% - 5px)
+      margin-top: 0
+      margin-bottom: 0
+
+  &[x-placement^="bottom"]
+    margin-top: 5px
+
+    .tooltip-arrow
+      border-width: 0 5px 5px 5px
+      border-left-color: transparent !important
+      border-right-color: transparent !important
+      border-top-color: transparent !important
+      top: -5px
+      left: calc(50% - 5px)
+      margin-top: 0
+      margin-bottom: 0
+
+  &[x-placement^="right"]
+    margin-left: 5px
+
+    .tooltip-arrow
+      border-width: 5px 5px 5px 0
+      border-left-color: transparent !important
+      border-top-color: transparent !important
+      border-bottom-color: transparent !important
+      left: -5px
+      top: calc(50% - 5px)
+      margin-left: 0
+      margin-right: 0
+
+
+  &[x-placement^="left"]
+    margin-right: 5px
+
+    .tooltip-arrow
+      border-width: 5px 0 5px 5px
+      border-top-color: transparent !important
+      border-right-color: transparent !important
+      border-bottom-color: transparent !important
+      right: -5px
+      top: calc(50% - 5px)
+      margin-left: 0
+      margin-right: 0
+
+  &.popover
+    $color: #f9f9f9
+
+    .popover-inner
+      background: $color
+      color: black
+      padding: 24px
+      border-radius: 5px
+      box-shadow: 0 5px 30px rgba(black, .1)
+
+    .popover-arrow
+      border-color: $color
+
+  &[aria-hidden='true']
+    visibility: hidden
+    opacity: 0
+    transition: opacity .15s, visibility .15s
+
+  &[aria-hidden='false']
+    visibility: visible
+    opacity: 1
+    transition: opacity .15s
