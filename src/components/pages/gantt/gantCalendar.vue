@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex flex-row">
+    <div class="d-flex flex-row gantt-container">
         <v-container class="d-flex flex-column autowidth flex-grow-1 dop-cont">
             <div class="d-flex">
                 <v-btn class="mx-2" icon dark small color="info" v-tooltip.auto="`Инструкция`" @click="modalInstruction=true">
@@ -1264,5 +1264,9 @@
     .not-allowed {
         cursor: not-allowed;
     }
-
+    @media (max-width: 800px) {
+        .gantt-container {
+            display: block !important;
+        }
+    }
 </style>
