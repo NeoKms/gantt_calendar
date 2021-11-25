@@ -1,17 +1,17 @@
 <template>
     <v-card>
         <v-card-title class="sticky-row pa-6">
-            <span class="headline">Настройка графика работы</span>
+            <span class="headline" v-text="$t('setSchedule')" />
         </v-card-title>
         <v-card-text>
             <v-container grid-list-md>
                 <v-layout wrap>
                     <v-flex xs12 sm12 md12>
-                        <v-select v-model="value.graph" :items="graphArr" item-text="name" item-value="val" label="График работы" @change="clearValue"/>
+                        <v-select v-model="value.graph" :items="graphArr" item-text="name" item-value="val" :label="$t('schedule')" @change="clearValue"/>
                     </v-flex>
                     <v-expand-transition>
                         <v-flex xs12 sm12 md12 v-if="value.graph===1">
-                            <v-select v-model="value.weekends" :items="weekendsArr" item-text="name" item-value="val" label="Выходные"/>
+                            <v-select v-model="value.weekends" :items="weekendsArr" item-text="name" item-value="val" :label="$t('weekend')"/>
                         </v-flex>
                     </v-expand-transition>
                     <v-expand-transition>
@@ -30,7 +30,7 @@
                                             filled
                                             single-line
                                             v-model="rutext"
-                                            label="Нажмите для выбора даты"
+                                            :label="$t('pressToSetDate')"
                                             prepend-icon="mdi-calendar"
                                             class="mrgdown"
                                             readonly
@@ -62,17 +62,17 @@
                     </v-expand-transition>
                     <v-expand-transition>
                         <v-flex xs12 sm12 md12 v-if="value.graph>0">
-                            <v-select v-model="value.workingTime" :items="workingTimeArr" item-text="name" item-value="val" label="Время работы"/>
+                            <v-select v-model="value.workingTime" :items="workingTimeArr" item-text="name" item-value="val" :label="$t('workingTime')"/>
                         </v-flex>
                     </v-expand-transition>
                     <v-expand-transition>
                         <v-flex xs12 sm12 md12 v-if="value.workingTime>0">
-                            <v-select v-model="value.workingTimeStart" :items="timeArr" item-text="name" item-value="val" label="Время начала работы" @change="value.workingTimeEnd=-1"/>
+                            <v-select v-model="value.workingTimeStart" :items="timeArr" item-text="name" item-value="val" :label="$t('timeToStartWork')" @change="value.workingTimeEnd=-1"/>
                         </v-flex>
                     </v-expand-transition>
                     <v-expand-transition>
                         <v-flex xs12 sm12 md12 v-if="value.workingTimeStart>=0">
-                            <v-select v-model="value.workingTimeEnd" :items="timeArr2" item-text="name" item-value="val" label="Время окончания работы"/>
+                            <v-select v-model="value.workingTimeEnd" :items="timeArr2" item-text="name" item-value="val" :label="$t('timeToEndWork')"/>
                         </v-flex>
                     </v-expand-transition>
                 </v-layout>
@@ -82,8 +82,8 @@
             <v-row align="center" justify="center" no-gutters>
                 <span class="text-center font-weight-bold red--text">{{error}}</span>
                 <v-btn-toggle rounded>
-                    <v-btn color="blue darken-1" style="width: 100px" @click="close">Закрыть</v-btn>
-                    <v-btn color="blue darken-1" style="width: 100px" @click="save" :disabled="!canBeSave">Сохранить</v-btn>
+                    <v-btn color="blue darken-1" style="width: 100px" @click="close" v-text="$t('close')" />
+                    <v-btn color="blue darken-1" style="width: 100px" @click="save" :disabled="!canBeSave" v-text="$t('save')"/>
                 </v-btn-toggle>
             </v-row>
         </v-card-actions>
@@ -106,26 +106,7 @@
                     workingTimeEnd: -1,
                     firstDayWork: new Date(this.startDateWork * 1000).toLocaleDateString('en-CA'),
                     next: 0,
-                },
-                workingTimeArr: [
-                    {val: 1, name: 'День'},
-                    {val: 2, name: 'Ночь'},
-                ],
-                graphArr: [
-                    {val: 1, name: '5/2'},
-                    {val: 2, name: '2/2'},
-                    {val: 3, name: '3/1'},
-                    {val: 4, name: 'Без выходных'},
-                ],
-                weekendsArr: [
-                    {val: 1, name: 'пн-вт'},
-                    {val: 2, name: 'вт-ср'},
-                    {val: 3, name: 'ср-чт'},
-                    {val: 4, name: 'чт-пт'},
-                    {val: 5, name: 'пт-сб'},
-                    {val: 6, name: 'сб-вс'},
-                    {val: 7, name: 'вс-пн'},
-                ],
+                }
             }
         },
         methods: {
@@ -155,6 +136,31 @@
             },
         },
         computed: {
+          graphArr() {
+           return  [
+              {val: 1, name: '5/2'},
+              {val: 2, name: '2/2'},
+              {val: 3, name: '3/1'},
+              {val: 4, name: this.$t('withoutWeekends')},
+            ]
+          },
+          weekendsArr() {
+            return [
+              {val: 1, name: `${this.$t('dayType.mo')}-${this.$t('dayType.tu')}`},
+              {val: 2, name: `${this.$t('dayType.tu')}-${this.$t('dayType.we')}`},
+              {val: 3, name: `${this.$t('dayType.we')}-${this.$t('dayType.th')}`},
+              {val: 4, name: `${this.$t('dayType.th')}-${this.$t('dayType.fr')}`},
+              {val: 5, name: `${this.$t('dayType.fr')}-${this.$t('dayType.sa')}`},
+              {val: 6, name: `${this.$t('dayType.sa')}-${this.$t('dayType.su')}`},
+              {val: 7, name: `${this.$t('dayType.su')}-${this.$t('dayType.mo')}`},
+            ]
+          },
+          workingTimeArr(){
+            return [
+              {val: 1, name: this.$t('day')},
+              {val: 2, name: this.$t('night')},
+            ]
+          },
             minimax() {
                 let min = new Date(this.startDateWork*1000).toLocaleDateString('en-CA'),
                     max = new Date().toLocaleDateString('en-CA')
@@ -171,13 +177,11 @@
                 if (graph<0 || workingTime<0 || workingTimeEnd<0 || workingTimeStart<0) return false
                 if (graph===1 && weekends<0) return false
                 if (workingTime===1 && workingTimeStart>workingTimeEnd) {
-                    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-                    this.error = 'Время начала работы в дневную смену не может быть больше окончания'
+                    this.error = this.$t('errors.timeDayShift')
                     return false
                 }
                 if (workingTime===2 && workingTimeStart<workingTimeEnd) {
-                    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-                    this.error = 'Время начала работы в ночную смену не может быть меньше окончания'
+                    this.error = this.$t('errors.timeNightShift')
                     return false
                 }
                 return true

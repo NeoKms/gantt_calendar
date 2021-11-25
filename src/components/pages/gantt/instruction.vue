@@ -1,11 +1,11 @@
 <template>
     <v-card>
         <v-card-title class="sticky-row pa-6">
-            <span class="headline">Инструкция по работе с графиком</span>
+            <span class="headline" v-text="$t('instruction.title')" />
         </v-card-title>
         <v-card-text>
             <v-row justify="center">
-                <v-col class="text-center"> Для изменения интервалов потяните за левый или правый край.</v-col>
+                <v-col class="text-center" v-text="$t('instruction.p1')" />
             </v-row>
             <v-row justify="center" align-content="center" content="center">
                 <v-col class="text-center">
@@ -13,15 +13,15 @@
                 </v-col>
             </v-row>
             <v-row justify="center" align-content="center" content="center">
-                <v-col class="text-center"> Для изменения типа существующего интервала кликните правой кнопкой мыши по интервалу и выберите "редактировать".</v-col>
+                <v-col class="text-center" v-text="$t('instruction.p2')" />
             </v-row>
             <v-row justify="center" align-content="center" content="center">
                 <v-col class="text-center"> <img src="@/assets/img/gantt-change-type.gif" class="image-info-2" style="margin: auto"/></v-col>
             </v-row>
             <v-row justify="center" align-content="center" content="center">
                 <v-col class="text-center">
-                    <p> Для добавления нового интервала кликните на троеточие возле ФИО пользователя и выберите "добавить интервал".</p>
-                    <p> Далее наведите мышью на место начала интервала (левый край) и с <b>нажатой</b> левой кнопкой мыши тяните вправо до места, где интервал должен закончиться.</p>
+                    <p v-text="$t('instruction.p3')" />
+                    <p v-html="$t('instruction.p4')" />
                 </v-col>
             </v-row>
             <v-row justify="center" align-content="center" content="center">
@@ -31,7 +31,7 @@
         <v-card-actions class="sticky-row-bottom">
             <v-row align="center" justify="center" no-gutters>
                 <v-btn-toggle rounded>
-                    <v-btn color="blue darken-1" style="width: 100px" @click="$emit('close')">Закрыть</v-btn>
+                    <v-btn color="blue darken-1" style="width: 100px" @click="$emit('close')" v-text="$t('close')" />
                 </v-btn-toggle>
             </v-row>
         </v-card-actions>

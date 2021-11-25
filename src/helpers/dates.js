@@ -1,7 +1,10 @@
-const formatDateJS = (t,m) => {
+const formatDateJS = (t,m, locale = 'ru' ) => {
     if(!m) m='YYYY-MM-DD hh:mm:ss';
     var d= new Date(t*1000);
-    var mmmm=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+    let mmmm = ['янв.','фев.','марта','апр.','мая','июня','июля','авг.','сент.','окт.','ноября','дек.'];
+    if (locale === 'en') {
+      mmmm = ['Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.']
+    }
     m=m.replace('YYYY',d.getUTCFullYear());
     m=m.replace('YY',(d.getUTCFullYear() % 100 >9?'':'0')+d.getUTCFullYear() % 100);
     m=m.replace('MMMM',mmmm[d.getUTCMonth()]);

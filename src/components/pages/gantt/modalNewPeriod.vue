@@ -1,16 +1,16 @@
 <template>
     <v-card>
         <v-card-title class="sticky-row pa-6">
-            <span class="headline">Добавление нового интервала</span>
+            <span class="headline" v-text="$t('addNewInterval')" />
         </v-card-title>
         <v-card-text>
             <v-container grid-list-md>
                 <v-layout wrap>
                     <v-flex xs12 sm12 md12>
-                        <v-select v-model="value" :items="intervals" item-text="name" item-value="val" label="Тип интервала" />
+                        <v-select v-model="value" :items="intervals" item-text="name" item-value="val" :label="$t('intervalType')" />
                     </v-flex>
                     <v-flex xs12 sm12 md12>
-                        <v-textarea v-model="comment" label="Комментарий" />
+                        <v-textarea v-model="comment" :label="$t('comment')" />
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -18,8 +18,8 @@
         <v-card-actions class="sticky-row-bottom">
             <v-row align="center" justify="center" no-gutters>
                 <v-btn-toggle rounded>
-                    <v-btn color="blue darken-1" style="width: 100px" @click="close">Закрыть</v-btn>
-                    <v-btn color="blue darken-1" style="width: 100px" @click="save" :disabled="value===-1">Сохранить</v-btn>
+                    <v-btn color="blue darken-1" style="width: 100px" @click="close" v-text="$t('close')" />
+                    <v-btn color="blue darken-1" style="width: 100px" @click="save" :disabled="value===-1" v-text="$t('save')" />
                 </v-btn-toggle>
             </v-row>
         </v-card-actions>

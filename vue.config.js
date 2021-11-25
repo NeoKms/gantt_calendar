@@ -1,21 +1,16 @@
-const path = require('path');
-
 module.exports = {
-    chainWebpack(config) {
-        config
-            .entry('app')
-            .clear()
-            .add('./src/main.js')
-            .end();
-        config.resolve.alias
-            .set('@', path.join(__dirname, './src'))
+  devServer: {
+    disableHostCheck: true,
+    port: 80,
+    public: '0.0.0.0:80'
+  },
+  transpileDependencies: ['vuetify'],
+  pluginOptions: {
+    i18n: {
+      locale: 'en',
+      fallbackLocale: 'en',
+      localeDir: 'locales',
+      enableInSFC: false,
     },
-	devServer: {
-		disableHostCheck: true
-	},
-	runtimeCompiler: true,
-	assetsDir: '@/assets/',
-	publicPath:  process.env.NODE_ENV === 'production'
-		? '/gantt-calendar/'
-		: '/'
-};
+  },
+}
