@@ -5,7 +5,7 @@ Vue.use(Router)
 
 const router = new Router({
   mode: "history",
-  base: process.env.NODE_ENV === 'production' ? 'vue' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/vue/' : '/',
   routes: [
     {
       path: '/gantt-calendar',

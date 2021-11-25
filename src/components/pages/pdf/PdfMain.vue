@@ -14,7 +14,7 @@
           <v-sheet elevation="6" class="centerColumn pa-4">
             <v-row v-if="step===1">
               <v-col cols="12">
-                <v-btn :loading="loadingPdf||loadingPdfSave" @click="$refs.pdffile.click()" color="green">{{$t('addPdf')}}</v-btn>
+                <v-btn small :loading="loadingPdf||loadingPdfSave" @click="$refs.pdffile.click()" color="green">{{$t('addPdf')}}</v-btn>
               </v-col>
               <v-col cols="12">
                 <v-divider />
@@ -61,7 +61,7 @@
                 <v-divider />
               </v-col>
               <v-col cols="12">
-                <v-btn @click="savePost" color="green" :loading="loadingSaver"
+                <v-btn @click="savePost" color="green" :loading="loadingSaver" small
                        :disabled="
                        !this.shapes.find(el=>el.fieldType==='title')||
                        !this.shapes.find(el=>el.fieldType==='preview')||
@@ -90,10 +90,10 @@
             </v-row>
             <v-row v-if="(stepNext || stepPrev) && !(loadingPdf||loadingPdfSave)">
               <v-col :cols="stepNext ? 6 : 12" v-if="stepPrev">
-                <v-btn color="primary" @click="step===1?1:step--">{{$t('Back')}}</v-btn>
+                <v-btn color="primary" @click="step===1?1:step--" small>{{$t('Back')}}</v-btn>
               </v-col>
               <v-col v-if="stepNext" :cols="stepPrev ? 6 : 12">
-                <v-btn color="primary" @click="step===3?3:step++">{{$t('Continue')}}</v-btn>
+                <v-btn color="primary" @click="step===3?3:step++" small>{{$t('Continue')}}</v-btn>
               </v-col>
               <v-col cols="12">
                 <v-divider />
