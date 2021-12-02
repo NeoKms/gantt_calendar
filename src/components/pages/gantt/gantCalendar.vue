@@ -58,9 +58,9 @@
             <div
               :style="Object.assign({'max-width': `${timeWidth}px`,'min-width': `${timeWidth}px`},user.ganttData[`${day.i}_${hour}`].style)"
               :class="user.ganttData[`${day.i}_${hour}`].class"
-              :key="`${user.upd_timestamp}_${day.i}_${hour}_time`"
+              :key="`${user.id}_${day.i}_${hour}_time`"
               :ref="`${user.id}_${day.i}_${hour}_time`"
-              :id="`${user.upd_timestamp}_${day.i}_${hour}_time`"
+              :id="`${user.id}_${day.i}_${hour}_time`"
               v-tooltip.auto="user.ganttData[`${day.i}_${hour}`].tooltip"
               :draggable="user.ganttData[`${day.i}_${hour}`].draggable || false"
               @dragstart="dragStart($event,user.ganttData[`${day.i}_${hour}`])"
@@ -163,7 +163,7 @@ export default {
         type: null,
       },
       //
-      viewCount: 9,
+      viewCount: 8,
       startDate: 0,
       today: 0,
       step: 3,
@@ -1171,7 +1171,7 @@ export default {
       if (this.$el.offsetWidth < 1600) {
         this.viewCount = 6
       }
-      this.startDate = Math.round(new Date(new Date().toLocaleDateString('en-CA')).getTime() / 1000) - 86400 * this.viewCount / 2
+      this.startDate = getUnixTime(new Date().toLocaleDateString('en-CA') + ' 00:00:00') - (86400 * (this.viewCount / 2))
       this.today = this.startDate + 86400 * this.viewCount
       let self = this
       document.getElementById('app').addEventListener('click', function (event) {
