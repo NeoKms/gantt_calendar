@@ -10,8 +10,8 @@
     <div class="lighten pa-md-4">
       <input type="file" ref="pdffile" style="display: none" accept="application/pdf" @change="changeFileInput">
       <v-row class="ma-2">
-        <v-col cols="3">
-          <v-sheet elevation="6" class="centerColumn pa-4">
+        <v-col cols="12" lg="3" md="12" sm="12" xs="12">
+          <v-sheet elevation="6" class="leftColumn pa-4">
             <v-row v-if="step===1">
               <v-col cols="12">
                 <v-btn :loading="loadingPdf||loadingPdfSave" @click="$refs.pdffile.click()" color="green">{{$t('addPdf')}}</v-btn>
@@ -101,7 +101,7 @@
             </v-row>
           </v-sheet>
         </v-col>
-        <v-col cols="6">
+        <v-col cols="12" lg="6"  md="12" sm="12" xs="12">
           <div class="centerColumn">
             <v-stage
               :config="configKonva"
@@ -130,7 +130,7 @@
             </v-stage>
           </div>
         </v-col>
-        <v-col cols="3">
+        <v-col cols="12" lg="3"  md="12" sm="12" xs="12">
           <v-sheet elevation="6" class="pa-4 rightColumn">
             <v-row v-for="(page,ind) in selectedPages" @click="changeNowPage(page.id)" :key="ind">
               <v-col cols="12">
@@ -514,17 +514,18 @@
 </script>
 
 <style scoped>
-  .stepper {
-    position: sticky;
-    top: 0;
-    background-color: white;
-    z-index: 1;
-  }
-  .centerColumn {
-    min-height: 600px;
-    text-align: center;
-    text-align: -webkit-center;
-  }
+.stepper {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+}
+.centerColumn, .leftColumn {
+  min-height: 600px;
+  text-align: center;
+  text-align: -webkit-center;
+}
+
 .pdfPage {
   position: relative;
   text-align: center;
@@ -536,9 +537,16 @@
 .pdfPage_active {
   background-color: #a7dbb0 !important;
 }
+.rightColumn {
+  overflow: auto;
+  max-height: 600px;
+  min-height: 600px;
+}
+@media screen and (max-width: 1264px) {
+  .leftColumn,
+  .centerColumn,
   .rightColumn {
-    overflow: auto;
-    max-height: 600px;
-    min-height: 600px;
+    min-height: auto;
   }
+}
 </style>
