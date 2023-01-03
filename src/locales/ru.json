@@ -122,5 +122,7 @@
 	"widgets": "",
 	"withoutWeekends": "Без выходных",
 	"wizard": "",
-	"workingTime": "Время работы"
+	"workingTime": "Время работы",
+	"undo": "Отменить",
+	"redo": "Повторить"
 }
