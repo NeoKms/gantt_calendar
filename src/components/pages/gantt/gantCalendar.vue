@@ -7,11 +7,11 @@
           <v-icon dark style="font-size: 30px">mdi-information-outline</v-icon>
         </v-btn>
         <v-spacer/>
-        <v-btn class="mx-2" fab dark small v-tooltip.auto="$t('cancel')" @click="changeState(0)"
+        <v-btn class="mx-2" fab dark small v-tooltip.auto="$t('undo')" @click="changeState(0)"
                :disabled="states.length===1 || nowStateInd===0">
           <v-icon dark>mdi-undo</v-icon>
         </v-btn>
-        <v-btn class="mx-2" fab dark small v-tooltip.auto="$t('back')" @click="changeState(1)"
+        <v-btn class="mx-2" fab dark small v-tooltip.auto="$t('redo')" @click="changeState(1)"
                :disabled="states.length===1||nowStateInd===states.length-1">
           <v-icon dark>mdi-redo</v-icon>
         </v-btn>
