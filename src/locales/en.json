@@ -122,5 +122,7 @@
 	"widgets": "Widgets",
 	"withoutWeekends": "Seven days a week",
 	"wizard": "Wizard",
-	"workingTime": "Working hours"
+	"workingTime": "Working hours",
+	"undo": "Undo",
+	"redo": "Redo"
 }
